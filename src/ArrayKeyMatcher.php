@@ -75,12 +75,7 @@ class ArrayKeyMatcher implements Matcher
 
         if (true === is_array($keys)) {
             foreach ($keys as $key) {
-
                 if (is_string($key)) {
-                    $this->keys[] = $key;
-                }
-
-                if (is_array($key)) {
                     $this->keys[] = $key;
                 }
             }
@@ -109,6 +104,9 @@ class ArrayKeyMatcher implements Matcher
     private function getValueForSubkeys($base, $subkeys)
     {
         foreach ($subkeys as $key) {
+            if (false === isset($base[$key])) {
+                return false;
+            }
             $base = $base[$key];
         }
 

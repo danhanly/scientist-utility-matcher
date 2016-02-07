@@ -156,4 +156,17 @@ class ArrayKeyMatcherTest extends \PHPUnit_Framework_TestCase
 
         $this->assertFalse($matcher->match($control, $trial));
     }
+
+    public function testDeepArrayKeyMatchingWithMissingKeys()
+    {
+        $control = [];
+        $control['first']['second'] = 'test';
+
+        $trial = [];
+        $trial['first']['second'] = 'test';
+
+        $matcher = new ArrayKeyMatcher('first->key');
+
+        $this->assertFalse($matcher->match($control, $trial));
+    }
 }
