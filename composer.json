@@ -1,0 +1,27 @@
+{
+  "name": "danhanly/scientist-utility-matcher",
+  "description": "Utility Matchers for Scientist",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Dan Hanly",
+      "email": "danhanly@gmail.com"
+    }
+  ],
+  "require": {
+    "daylerees/scientist": "~1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~5.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "DanHanly\\Scientist\\UtilityMatchers\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "DanHanly\\Scientist\\UtilityMatchers\\Tests\\": "tests"
+    }
+  }
+}
