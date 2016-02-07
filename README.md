@@ -41,6 +41,30 @@ $matcher = new \DanHanly\Scientist\UtilityMatchers\ObjectPropertyMatcher('proper
 $matcher = new \DanHanly\Scientist\UtilityMatchers\ObjectPropertyMatcher(['propertyName', 'anotherPropertyName']);
 ```
 
+### ArrayKeyMatcher
+
+This allows you to match specific keys on arrays returned with the control and trial processes.
+
+When initialising the matcher, you can configure it to either match against a single key (via string), or multiple keys (via array)
+
+```php
+// initialise matcher
+$matcher = new \DanHanly\Scientist\UtilityMatchers\ArrayKeyMatcher;
+// define keys via string
+$matcher->setKeys('keyName');
+// or via array
+$matcher->setKeys(['keyName', 'anotherKeyName']);
+```
+
+You can also set keys directly via the matcher constructor.
+
+```php
+// define key via string
+$matcher = new \DanHanly\Scientist\UtilityMatchers\ArrayKeyMatcher('keyName');
+// or via array
+$matcher = new \DanHanly\Scientist\UtilityMatchers\ArrayKeyMatcher(['keyName', 'anotherKeyName']);
+```
+
 ## Usage
 
 Once you've initialised and configured your matcher, you can use it within your experiments.
