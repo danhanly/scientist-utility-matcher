@@ -35,6 +35,24 @@ class ArrayKeyMatcher implements Matcher
         }
 
         foreach ($keys as $key) {
+            // Deal With Deep Keys
+            if (false !== strpos($key, '->')) {
+                $subkeys = explode('->', $key);
+
+                $controlValue = $this->getValueForSubkeys($control, $subkeys);
+                $trialValue = $this->getValueForSubkeys($trial, $subkeys);
+
+                if ($controlValue === false || $trialValue === false) {
+                    return false;
+                }
+
+                if ($controlValue !== $trialValue) {
+                    return false;
+                }
+
+                continue;
+            }
+            // Simple Keys
             if ($control[$key] !== $trial[$key]) {
                 return false;
             }
@@ -57,8 +75,12 @@ class ArrayKeyMatcher implements Matcher
 
         if (true === is_array($keys)) {
             foreach ($keys as $key) {
-                // Only add if the property name is a string
+
                 if (is_string($key)) {
+                    $this->keys[] = $key;
+                }
+
+                if (is_array($key)) {
                     $this->keys[] = $key;
                 }
             }
@@ -76,5 +98,20 @@ class ArrayKeyMatcher implements Matcher
         }
 
         return $this->keys;
+    }
+
+    /**
+     * @param array $base
+     * @param array $subkeys
+     *
+     * @return mixed
+     */
+    private function getValueForSubkeys($base, $subkeys)
+    {
+        foreach ($subkeys as $key) {
+            $base = $base[$key];
+        }
+
+        return $base;
     }
 }
