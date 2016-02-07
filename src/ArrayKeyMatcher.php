@@ -4,8 +4,15 @@ namespace DanHanly\Scientist\UtilityMatchers;
 
 use Scientist\Matchers\Matcher;
 
+/**
+ * Class ArrayKeyMatcher
+ * @package DanHanly\Scientist\UtilityMatchers
+ */
 class ArrayKeyMatcher implements Matcher
 {
+    /**
+     * @var array $keys
+     */
     protected $keys = [];
 
     /**

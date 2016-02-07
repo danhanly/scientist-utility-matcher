@@ -4,8 +4,15 @@ namespace DanHanly\Scientist\UtilityMatchers;
 
 use Scientist\Matchers\Matcher;
 
+/**
+ * Class ObjectPropertyMatcher
+ * @package DanHanly\Scientist\UtilityMatchers
+ */
 class ObjectPropertyMatcher implements Matcher
 {
+    /**
+     * @var array $properties
+     */
     protected $properties = [];
 
     /**

@@ -78,6 +78,23 @@ Say for example you wanted to match the zip code of an address, but the address 
 $matcher = new \DanHanly\Scientist\UtilityMatchers\ArrayKeyMatcher('data->user->address->zip');
 ```
 
+### 2.3 MinMaxMatcher
+
+This allows you to ensure that both the trial values and the control values are within a predefined threshold.
+
+When initialising the matcher, you can configure it to match only those that are greater than a minimum value, those that are less than a maximum value, or a combination of both.
+
+The first parameter is the minimum value, the second parameter is the maximum value.
+
+```php
+// intialise with a 0 minimum
+$matcher = new \DanHanly\Scientist\UtilityMatchers\MinMaxMatcher(0);
+// intialise with a 10 maximum
+$matcher = new \DanHanly\Scientist\UtilityMatchers\MinMaxMatcher(null, 10);
+// intialise between 0 and 10
+$matcher = new \DanHanly\Scientist\UtilityMatchers\MinMaxMatcher(0, 10);
+```
+
 ## 3. Usage
 
 Once you've initialised and configured your matcher, you can use it within your experiments.
