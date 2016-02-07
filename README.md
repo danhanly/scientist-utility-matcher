@@ -30,8 +30,22 @@ $matcher = new \DanHanly\Scientist\UtilityMatchers\ObjectPropertyMatcher;
 $matcher->setProperties('propertyName');
 // or via array
 $matcher->setProperties(['propertyName', 'anotherPropertyName']);
+```
 
-// plug matcher into experiment
+You can also set properties directly via the matcher constructor.
+
+```php
+// define property via string
+$matcher = new \DanHanly\Scientist\UtilityMatchers\ObjectPropertyMatcher('propertyName');
+// or via array
+$matcher = new \DanHanly\Scientist\UtilityMatchers\ObjectPropertyMatcher(['propertyName', 'anotherPropertyName']);
+```
+
+## Usage
+
+Once you've initialised and configured your matcher, you can use it within your experiments.
+
+```php
 $experiment = (new Scientist\Laboratory)
   ->experiment('experiment title')
   ->control($controlCallback)

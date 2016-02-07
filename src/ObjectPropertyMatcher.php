@@ -9,6 +9,17 @@ class ObjectPropertyMatcher implements Matcher
     protected $properties = [];
 
     /**
+     * ObjectPropertyMatcher constructor.
+     * @param null|array $properties
+     */
+    public function __construct($properties = null)
+    {
+        if (null !== $properties) {
+            $this->setProperties($properties);
+        }
+    }
+
+    /**
      * Determine whether two values match.
      *
      * @param mixed $control
